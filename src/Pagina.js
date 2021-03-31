@@ -6,6 +6,7 @@ import ActionsMenu from './components/ActionsMenu';
 import Table from './components/Tabla/Table'
 import Modal from './components/Modal';
 class Pagina extends Component {
+
   render() {
     const { titulo = "Pagina si titulo" } = this.props;
     return (
@@ -13,8 +14,8 @@ class Pagina extends Component {
         <Nav />
         <ActionsMenu titulo={titulo} />
         <Table />
-        <Modal />
-      </div>
+        </>
+      </div >
     );
   }
 }
