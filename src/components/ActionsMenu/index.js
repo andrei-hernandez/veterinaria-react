@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './ActionsMenu.css';
 import Alert from '../Alert/index';
 
-export default function ActionsMenu({ , titulo }) {
+export default function ActionsMenu({ titulo }) {
   const [mostarAlerta, setMostarAlerta] = useState(false);
 
   return (
