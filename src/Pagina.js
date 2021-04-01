@@ -1,11 +1,31 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/js/bootstrap';
 import Nav from './components/Nav';
 import ActionsMenu from './components/ActionsMenu';
 import Table from './components/Tabla/Table'
 import Modal from './components/Modal';
+import { listarEntidad } from './service';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap';
 class Pagina extends Component {
+<<<<<<< HEAD
+=======
+  constructor(props) {
+    super(props);
+    this.state = {
+      entidades: [],
+    }
+  }
+
+  listar = async () => {
+    const { entidad } = this.props;
+    const entidades = await listarEntidad({ entidad });
+    this.setState({ entidades })
+  };
+
+  componentDidMount() {
+    this.listar();
+  }
+>>>>>>> develop
 
   render() {
     const { titulo = "Pagina si titulo" } = this.props;
