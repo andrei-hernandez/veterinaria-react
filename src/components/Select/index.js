@@ -17,7 +17,6 @@ export default function Select({ options = [], nombreCampo = "vacio", onChange =
         </option>
       ))
       }
-      {console.log(options)}
     </select>
   )
 }
