@@ -14,9 +14,9 @@ export const crearEditarEntidad = async ({ entidad = "mascotas", objeto = {}, me
   try {
     let url = null;
     if (method === 'PUT' && idObjeto) {
-      url += `${API_URL}/${entidad}/${idObjeto}`;
+      url = `${API_URL}/${entidad}/${idObjeto}`;
     } else if (method === 'POST') {
-      url += `${API_URL}/${entidad}`
+      url = `${API_URL}/${entidad}`
     }
     if (!url) {
       throw new Error('No cumple criterios de envio');

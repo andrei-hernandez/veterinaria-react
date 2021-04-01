@@ -1,10 +1,17 @@
 import React from 'react'
 
-export default function Select({ options = [], nombreCampo = "vacio", onChange = () => { } }) {
+export default function Select(
+  {
+    options = [],
+    nombreCampo = "vacio",
+    placeholder,
+    onChange = () => { }
+  }
+) {
 
   return (
-    <select id="tipo" className="form-control" onChange={onChange}>
-      <option value="">Seleccione {nombreCampo}</option>
+    <select id="tipo" className="form-control" onChange={onChange} name={nombreCampo}>
+      <option value="">Seleccione {placeholder}</option>
       {options.map(({ valor, etiqueta }, index) => (
         <option key=
           {

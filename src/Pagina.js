@@ -22,13 +22,23 @@ class Pagina extends Component {
   };
 
   manejarInput = (e) => {
-
-    console.log(e.target.value);
+    const
+      {
+        target: { value, name },
+      } = e
+    let { objeto } = this.state;
+    objeto = { ...objeto, [name]: value, }
+    this.setState({ objeto })
   }
 
-  crearEditarEntidad() {
-
-  }
+  crearEntidad = async () => {
+    const { entidad } = this.props;
+    const { objeto } = this.state;
+    const method = 'POST';
+    await crearEditarEntidad({ entidad, objeto, method });
+    this.listar();
+    console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+  };
 
   componentDidMount() {
     this.listar();
@@ -41,7 +51,7 @@ class Pagina extends Component {
         <Nav />
         <ActionsMenu titulo={titulo} />
         <Table entidades={this.state.entidades} />
-        <Modal manejarInput={this.manejarInput} />
+        <Modal manejarInput={this.manejarInput} crearEntidad={this.crearEntidad} />
       </div>
     );
   }
