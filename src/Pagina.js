@@ -30,7 +30,7 @@ class Pagina extends Component {
       <div className="container">
         <Nav />
         <ActionsMenu titulo={titulo} />
-        <Table />
+        <Table entidades={this.state.entidades} />
         <Modal />
       </div>
     );
