@@ -7,8 +7,6 @@ import { listarEntidad } from './service';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap';
 class Pagina extends Component {
-<<<<<<< HEAD
-=======
   constructor(props) {
     super(props);
     this.state = {
@@ -25,7 +23,6 @@ class Pagina extends Component {
   componentDidMount() {
     this.listar();
   }
->>>>>>> develop
 
   render() {
     const { titulo = "Pagina si titulo" } = this.props;
@@ -34,7 +31,7 @@ class Pagina extends Component {
         <Nav />
         <ActionsMenu titulo={titulo} />
         <Table />
-        </>
+        <Modal />
       </div >
     );
   }
