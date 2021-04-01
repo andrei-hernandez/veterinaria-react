@@ -3,7 +3,7 @@ import Nav from './components/Nav';
 import ActionsMenu from './components/ActionsMenu';
 import Table from './components/Tabla/Table'
 import Modal from './components/Modal';
-import { listarEntidad } from './service';
+import { listarEntidad, crearEditarEntidad } from './service';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap';
 class Pagina extends Component {
@@ -11,6 +11,7 @@ class Pagina extends Component {
     super(props);
     this.state = {
       entidades: [],
+      objeto: {},
     }
   }
 
@@ -18,6 +19,25 @@ class Pagina extends Component {
     const { entidad } = this.props;
     const entidades = await listarEntidad({ entidad });
     this.setState({ entidades })
+  };
+
+  manejarInput = (e) => {
+    const
+      {
+        target: { value, name },
+      } = e
+    let { objeto } = this.state;
+    objeto = { ...objeto, [name]: value, }
+    this.setState({ objeto })
+  }
+
+  crearEntidad = async () => {
+    const { entidad } = this.props;
+    const { objeto } = this.state;
+    const method = 'POST';
+    await crearEditarEntidad({ entidad, objeto, method });
+    this.listar();
+    console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
   };
 
   componentDidMount() {
@@ -30,9 +50,9 @@ class Pagina extends Component {
       <div className="container">
         <Nav />
         <ActionsMenu titulo={titulo} />
-        <Table />
-        <Modal />
-      </div >
+        <Table entidades={this.state.entidades} />
+        <Modal manejarInput={this.manejarInput} crearEntidad={this.crearEntidad} />
+      </div>
     );
   }
 }
