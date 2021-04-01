@@ -9,10 +9,6 @@ export default function ModalFooter({ crearEntidad = () => { } }) {
         data-dismiss="modal"
       >
         Cerrar
-<<<<<<< HEAD
-        </button>
-      <button type="button" className="btn btn-primary" data-dismiss="modal" id="btn-guardar">Crear</button>
-=======
       </button>
       <button
         onClick={crearEntidad}
@@ -22,7 +18,6 @@ export default function ModalFooter({ crearEntidad = () => { } }) {
       >
         Crear
       </button>
->>>>>>> develop
     </div>
   )
 }
