@@ -4,7 +4,7 @@ import Select from '../Select';
 import Input from '../Input';
 import ModalFooter from './ModalFooter'
 
-export default function Modal() {
+export default function Modal({ manejarInput = () => { } }) {
 
   const tiposMascota =
     [
@@ -33,15 +33,15 @@ export default function Modal() {
               <input type="hidden" id="indice" />
               <div className="form-row">
                 <div className="col mb-4">
-                  <Select options={tiposMascota} nombreCampo="Tipo Animal" />
+                  <Select options={tiposMascota} onChange={manejarInput} nombreCampo="Tipo Animal" />
                 </div>
               </div>
               <div className="form-row">
                 <div className="col">
-                  <Input tipo="text" nombreCampo="Nombre" />
+                  <Input tipo="text" nombreCampo="Nombre" onInput={manejarInput} />
                 </div>
                 <div className="col"
-                ><Select options={owners} nombreCampo="Dueño" />
+                ><Select options={owners} onChange={manejarInput} nombreCampo="Dueño" />
                 </div>
               </div>
             </form>

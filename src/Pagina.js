@@ -3,7 +3,7 @@ import Nav from './components/Nav';
 import ActionsMenu from './components/ActionsMenu';
 import Table from './components/Tabla/Table'
 import Modal from './components/Modal';
-import { listarEntidad } from './service';
+import { listarEntidad, crearEditarEntidad } from './service';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap';
 class Pagina extends Component {
@@ -11,6 +11,7 @@ class Pagina extends Component {
     super(props);
     this.state = {
       entidades: [],
+      objeto: {},
     }
   }
 
@@ -19,6 +20,15 @@ class Pagina extends Component {
     const entidades = await listarEntidad({ entidad });
     this.setState({ entidades })
   };
+
+  manejarInput = (e) => {
+
+    console.log(e.target.value);
+  }
+
+  crearEditarEntidad() {
+
+  }
 
   componentDidMount() {
     this.listar();
@@ -31,7 +41,7 @@ class Pagina extends Component {
         <Nav />
         <ActionsMenu titulo={titulo} />
         <Table entidades={this.state.entidades} />
-        <Modal />
+        <Modal manejarInput={this.manejarInput} />
       </div>
     );
   }
