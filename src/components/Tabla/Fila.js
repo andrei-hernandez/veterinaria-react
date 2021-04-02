@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
-export default function Fila({ entidad, index, editarEntidad = () => { } }) {
+export default function Fila({ entidad, index, editarEntidad = () => { }, eliminarEntidad = () => { } }) {
   return (
     <tbody id="lista-mascotas">
       <tr>
@@ -19,7 +19,11 @@ export default function Fila({ entidad, index, editarEntidad = () => { } }) {
               data-target="#exampleModalCenter"
               onClick={(e) => editarEntidad(e, index)}
             ><FontAwesomeIcon icon={faEdit} /></button>
-            <button type="button" className="btn btn-danger eliminar"><FontAwesomeIcon icon={faTrashAlt} /></button>
+            <button
+              type="button"
+              className="btn btn-danger eliminar"
+              onClick={(e) => eliminarEntidad(e, index)}
+            ><FontAwesomeIcon icon={faTrashAlt} /></button>
           </div>
         </td>
       </tr>
