@@ -5,7 +5,8 @@ export default function index(
     tipo = "text",
     nombreCampo,
     placeholder,
-    onInput = () => { }
+    onInput = () => { },
+    value = "",
   }
 ) {
   return (
@@ -14,6 +15,7 @@ export default function index(
       name={nombreCampo}
       className="form-control"
       placeholder={placeholder}
+      value={value}
       onInput={onInput}
     />
   )

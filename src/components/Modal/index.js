@@ -4,7 +4,13 @@ import Select from '../Select';
 import Input from '../Input';
 import ModalFooter from './ModalFooter'
 
-export default function Modal({ manejarInput = () => { }, crearEntidad = () => { } }) {
+export default function Modal(
+  {
+    manejarInput = () => { },
+    crearEntidad = () => { },
+    objeto = {},
+  }
+) {
 
   const tiposMascota =
     [
@@ -37,6 +43,7 @@ export default function Modal({ manejarInput = () => { }, crearEntidad = () => {
                     nombreCampo="tipo"
                     options={tiposMascota}
                     onChange={manejarInput}
+                    value={objeto.tipo}
                     placeholder="Tipo Animal" />
                 </div>
               </div>
@@ -46,12 +53,14 @@ export default function Modal({ manejarInput = () => { }, crearEntidad = () => {
                     nombreCampo="nombre"
                     tipo="text"
                     placeholder="Nombre"
+                    value={objeto.nombre}
                     onInput={manejarInput} />
                 </div>
                 <div className="col"
                 ><Select
                     nombreCampo="owner"
                     options={owners}
+                    value={objeto.owner}
                     onChange={manejarInput}
                     placeholder="Dueño" />
                 </div>

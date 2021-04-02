@@ -12,6 +12,8 @@ class Pagina extends Component {
     this.state = {
       entidades: [],
       objeto: {},
+      idObjeto: null,
+      method: 'POST',
     }
   }
 
@@ -33,11 +35,15 @@ class Pagina extends Component {
 
   crearEntidad = async () => {
     const { entidad } = this.props;
-    const { objeto } = this.state;
-    const method = 'POST';
-    await crearEditarEntidad({ entidad, objeto, method });
+    let { objeto } = this.state;
+    await crearEditarEntidad({ entidad, objeto, method: 'POST' });
     this.listar();
-    console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+  };
+
+  editarEntidad = async (_e, index) => {
+    const objeto = { ...this.state.entidades[index] };
+    this.setState({ objeto, idObjeto: index, method: 'PUT' }, () => {
+    });
   };
 
   componentDidMount() {
@@ -50,8 +56,13 @@ class Pagina extends Component {
       <div className="container">
         <Nav />
         <ActionsMenu titulo={titulo} />
-        <Table entidades={this.state.entidades} />
-        <Modal manejarInput={this.manejarInput} crearEntidad={this.crearEntidad} />
+        <Table
+          entidades={this.state.entidades}
+          editarEntidad={this.editarEntidad} />
+        <Modal
+          manejarInput={this.manejarInput}
+          crearEntidad={this.crearEntidad}
+          objeto={this.state.objeto} />
       </div>
     );
   }
