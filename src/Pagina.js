@@ -35,8 +35,13 @@ class Pagina extends Component {
 
   crearEntidad = async () => {
     const { entidad } = this.props;
-    let { objeto } = this.state;
-    await crearEditarEntidad({ entidad, objeto, method: 'POST' });
+    let { objeto, method, idObjeto } = this.state;
+    if (method === 'PUT') {
+      await crearEditarEntidad({ entidad, objeto, method, idObjeto });
+      this.setState({ method: 'POST' });
+    } else if (method === 'POST') {
+      await crearEditarEntidad({ entidad, objeto, method });
+    }
     this.listar();
   };
 

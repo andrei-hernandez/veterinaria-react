@@ -13,7 +13,7 @@ export const listarEntidad = async ({ entidad = "mascotas" }) => {
 export const crearEditarEntidad = async ({ entidad = "mascotas", objeto = {}, method = "POST", idObjeto = null }) => {
   try {
     let url = null;
-    if (method === 'PUT' && idObjeto) {
+    if (method === 'PUT' && (idObjeto || idObjeto === 0)) {
       url = `${API_URL}/${entidad}/${idObjeto}`;
     } else if (method === 'POST') {
       url = `${API_URL}/${entidad}`
