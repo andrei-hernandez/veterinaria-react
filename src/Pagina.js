@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Nav from './components/Nav';
 import ActionsMenu from './components/ActionsMenu';
 import Table from './components/Tabla/Table'
 import Modal from './components/Modal';
@@ -54,6 +53,7 @@ class Pagina extends Component {
   eliminarEntidad = async (_e, index) => {
     const { entidad } = this.props;
     const res = await eliminarEntidad({ entidad, idObjeto: index });
+    console.log(res);
     this.listar();
   }
 
@@ -62,10 +62,9 @@ class Pagina extends Component {
   }
 
   render() {
-    const { titulo = "Pagina si titulo" } = this.props;
+    const { titulo = "Pagina sin titulo" } = this.props;
     return (
       <div className="container">
-        <Nav />
         <ActionsMenu titulo={titulo} />
         <Table
           entidades={this.state.entidades}

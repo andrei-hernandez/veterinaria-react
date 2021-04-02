@@ -1,27 +1,28 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './nav.css';
 
 export default function nav() {
   return (
     <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
-      <a className="navbar-brand" href="/">Veterinaria</a>
+      <Link className="navbar-brand" to="/">Veterinaria</Link>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"
         aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse" id="navbarColor03">
         <ul className="navbar-nav mr-auto">
-          <li className="nav-item active">
-            <a className="nav-link" href="/index.html">Mascotas<span className="sr-only">(current)</span></a>
+          <li className="nav-item">
+            <Link className="nav-link" to="/">Mascotas</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/veterinaries.html">Veterinari@s</a>
+            <Link className="nav-link" to="/veterinaries">Veterinaries</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/consultas.html">Consultas</a>
+            <Link className="nav-link" to="/consultas">Consultas</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="owners.html">Dueños</a>
+            <Link className="nav-link" to="/owners">Dueñes</Link>
           </li>
         </ul>
         <form className="form-inline">
