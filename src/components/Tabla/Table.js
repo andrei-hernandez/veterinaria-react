@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Headder';
 import Fila from './Fila'
 
-export default function Table({ entidades = [], editarEntidad = () => { } }) {
+export default function Table({ entidades = [], editarEntidad = () => { }, eliminarEntidad = () => { } }) {
 
   const columnas = entidades.length > 0 ? Object.keys(entidades[0]) : [];
 
@@ -14,7 +14,8 @@ export default function Table({ entidades = [], editarEntidad = () => { } }) {
           <Fila
             entidad={entidad}
             index={index}
-            editarEntidad={editarEntidad} />)
+            editarEntidad={editarEntidad}
+            eliminarEntidad={eliminarEntidad} />)
       }
     </table>
   )
