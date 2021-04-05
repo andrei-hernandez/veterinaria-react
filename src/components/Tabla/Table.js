@@ -14,6 +14,7 @@ export default function Table({ entidades = [], editarEntidad = () => { }, elimi
           <Fila
             entidad={entidad}
             index={index}
+            columnas={columnas}
             editarEntidad={editarEntidad}
             eliminarEntidad={eliminarEntidad} />)
       }
