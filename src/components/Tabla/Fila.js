@@ -3,11 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 const evaluarCampo = ({ entidad, columna }) => {
-  if (typeof entidad[columna] === 'object') {
-    return 'objeto';
+  if (columna === "veterinarie") {
+    return `${entidad[columna].nombre} ${entidad[columna].apellido}`;
+  }
+  if (columna === "mascota") {
+    return `${entidad[columna].nombre} (${entidad[columna].tipo})`;
   }
   return entidad[columna];
-};
+}
 
 export default function Fila(
   {
@@ -23,7 +26,9 @@ export default function Fila(
       <tr>
         <th scope="row">{index}</th>
         {columnas.map((columna, _index) => (
-          <td key={`col-${columna}-${_index}`}>{evaluarCampo({ entidad, columna })}</td>
+          < td key={`col-${columna}-${_index}`}>
+            {evaluarCampo({ entidad, columna })}
+          </td>
         ))}
         <td>
           <div className="btn-group" role="group" aria-label="Basic example">
@@ -42,6 +47,6 @@ export default function Fila(
           </div>
         </td>
       </tr>
-    </tbody>
+    </tbody >
   )
 }

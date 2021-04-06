@@ -9,23 +9,18 @@ function App() {
       <Router>
         <Nav />
         <Switch>
-          <Route
-            exact
-            path="/"
-            component={() => (<Pagina titulo="Mascotas" entidad="mascotas" />)}
-          />
-          <Route
-            path="/veterinaries"
-            component={() => (<Pagina titulo="Veterinaries" entidad="veterinaries" />)}
-          />
-          <Route
-            path="/owners"
-            component={() => (<Pagina titulo="Dueñes" entidad="owners" />)}
-          />
-          <Route
-            path="/consultas"
-            component={() => (<Pagina titulo="Consultas" entidad="consultas" />)}
-          />
+          <Route exact path="/">
+            <Pagina titulo="Mascotas" entidad="mascotas" />
+          </Route >
+          <Route path="/veterinaries">
+            <Pagina titulo="Veterinaries" entidad="veterinaries" />
+          </Route >
+          <Route path="/owners">
+            <Pagina titulo="Dueñes" entidad="owners" />
+          </Route >
+          <Route path="/consultas">
+            <Pagina titulo="Consultas" entidad="consultas" />
+          </Route >
         </Switch>
       </Router>
     </div>
