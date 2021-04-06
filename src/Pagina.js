@@ -13,13 +13,18 @@ class Pagina extends Component {
       objeto: {},
       idObjeto: null,
       method: 'POST',
+      columnas: [],
     }
   }
 
   listar = async () => {
     const { entidad } = this.props;
     const entidades = await listarEntidad({ entidad });
-    this.setState({ entidades })
+    let columnas = [];
+    if (Array.isArray(entidades) && entidades.length > 0) {
+      columnas = Object.keys(entidades[0]) || [];
+    }
+    this.setState({ entidades, columnas })
   };
 
   manejarInput = (e) => {
@@ -69,7 +74,8 @@ class Pagina extends Component {
         <Table
           entidades={this.state.entidades}
           editarEntidad={this.editarEntidad}
-          eliminarEntidad={this.eliminarEntidad} />
+          eliminarEntidad={this.eliminarEntidad}
+          columnas={this.state.columnas} />
         <Modal
           manejarInput={this.manejarInput}
           crearEntidad={this.crearEntidad}
