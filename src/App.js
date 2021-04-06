@@ -9,18 +9,31 @@ function App() {
       <Router>
         <Nav />
         <Switch>
-          <Route exact path="/">
-            <Pagina titulo="Mascotas" entidad="mascotas" />
-          </Route >
-          <Route path="/veterinaries">
-            <Pagina titulo="Veterinaries" entidad="veterinaries" />
-          </Route >
-          <Route path="/owners">
-            <Pagina titulo="Dueñes" entidad="owners" />
-          </Route >
-          <Route path="/consultas">
-            <Pagina titulo="Consultas" entidad="consultas" />
-          </Route >
+          <Route
+            exact
+            path="/"
+            component={(props) => (
+              <Pagina {...props} titulo="Mascotas" entidad="mascotas" />
+            )}
+          />
+          <Route
+            path="/veterinaries"
+            component={(props) => (
+              <Pagina {...props} titulo="Veterinaries" entidad="veterinaries" />
+            )}
+          />
+          <Route
+            path="/owners"
+            component={(props) => (
+              <Pagina {...props} titulo="Dueñes" entidad="owners" />
+            )}
+          />
+          <Route
+            path="/consultas"
+            component={(props) => (
+              <Pagina {...props} titulo="Consultas" entidad="consultas" />
+            )}
+          />
         </Switch>
       </Router>
     </div>
