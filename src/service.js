@@ -39,7 +39,7 @@ export const eliminarEntidad = async ({ entidad = 'mascotas', idObjeto = null })
   try {
     if (!idObjeto || idObjeto !== 0) {
       const respuesta = await fetch(`${API_URL}/${entidad}/${idObjeto}`, {
-        method: "DELETE",
+        method: "DELETE"
       });
       const datos = await respuesta.json();
       return datos;

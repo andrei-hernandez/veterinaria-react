@@ -2,14 +2,34 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
-export default function Fila({ entidad, index, editarEntidad = () => { }, eliminarEntidad = () => { } }) {
+const evaluarCampo = ({ entidad, columna }) => {
+  if (columna === "veterinarie") {
+    return `${entidad[columna].nombre} ${entidad[columna].apellido}`;
+  }
+  if (columna === "mascota") {
+    return `${entidad[columna].nombre} (${entidad[columna].tipo})`;
+  }
+  return entidad[columna];
+}
+
+export default function Fila(
+  {
+    entidad,
+    index,
+    columnas = [],
+    editarEntidad = () => { },
+    eliminarEntidad = () => { }
+  }
+) {
   return (
     <tbody id="lista-mascotas">
       <tr>
         <th scope="row">{index}</th>
-        <td>{entidad.tipo}</td>
-        <td>{entidad.nombre}</td>
-        <td>{entidad.owner}</td>
+        {columnas.map((columna, _index) => (
+          < td key={`col-${columna}-${_index}`}>
+            {evaluarCampo({ entidad, columna })}
+          </td>
+        ))}
         <td>
           <div className="btn-group" role="group" aria-label="Basic example">
             <button
@@ -27,6 +47,6 @@ export default function Fila({ entidad, index, editarEntidad = () => { }, elimin
           </div>
         </td>
       </tr>
-    </tbody>
+    </tbody >
   )
 }

@@ -12,19 +12,27 @@ function App() {
           <Route
             exact
             path="/"
-            component={() => (<Pagina titulo="Mascotas" entidad="mascotas" />)}
+            component={(props) => (
+              <Pagina {...props} titulo="Mascotas" entidad="mascotas" />
+            )}
           />
           <Route
             path="/veterinaries"
-            component={() => (<Pagina titulo="Veterinaries" entidad="veterinaries" />)}
+            component={(props) => (
+              <Pagina {...props} titulo="Veterinaries" entidad="veterinaries" />
+            )}
           />
           <Route
             path="/owners"
-            component={() => (<Pagina titulo="Dueñes" entidad="owners" />)}
+            component={(props) => (
+              <Pagina {...props} titulo="Dueñes" entidad="owners" />
+            )}
           />
           <Route
             path="/consultas"
-            component={() => (<Pagina titulo="Consultas" entidad="consultas" />)}
+            component={(props) => (
+              <Pagina {...props} titulo="Consultas" entidad="consultas" />
+            )}
           />
         </Switch>
       </Router>
