@@ -11,7 +11,7 @@ export default function Select(
 ) {
 
   return (
-    <select id="tipo" className="form-control" onChange={onChange} name={nombreCampo} value={value}>
+    <select id={nombreCampo} className="form-control mb-4" onChange={onChange} name={nombreCampo} value={value}>
       <option value="">Seleccione {placeholder}</option>
       {options.map(({ valor, etiqueta }, index) => (
         <option key=

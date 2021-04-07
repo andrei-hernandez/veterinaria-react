@@ -13,7 +13,7 @@ export default function index(
     <input
       type={tipo}
       name={nombreCampo}
-      className="form-control"
+      className="form-control mb-4"
       placeholder={placeholder}
       value={value}
       onInput={onInput}

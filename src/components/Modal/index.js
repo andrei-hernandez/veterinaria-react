@@ -9,24 +9,11 @@ export default function Modal(
     manejarInput = () => { },
     crearEntidad = () => { },
     objeto = {},
+    children = [],
   }
 ) {
 
-  const tiposMascota =
-    [
-      { valor: "Perro", etiqueta: "Perro" },
-      { valor: "Gato", etiqueta: "Gato" },
-      { valor: "Pájaro", etiqueta: "Pájaro" },
-      { valor: "Otro", etiqueta: "Otro" },
-    ];
 
-  const owners =
-    [
-      { valor: "América", etiqueta: "América" },
-      { valor: "Andi", etiqueta: "Andi" },
-      { valor: "Jhon", etiqueta: "Jhon" },
-      { valor: "Felix", etiqueta: "Felix" },
-    ];
 
   return (
     <div className="modal fade" id="exampleModalCenter" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -38,31 +25,8 @@ export default function Modal(
             <form id="form">
               <input type="hidden" id="indice" />
               <div className="form-row">
-                <div className="col mb-4">
-                  <Select
-                    nombreCampo="tipo"
-                    options={tiposMascota}
-                    onChange={manejarInput}
-                    value={objeto.tipo}
-                    placeholder="Tipo Animal" />
-                </div>
-              </div>
-              <div className="form-row">
                 <div className="col">
-                  <Input
-                    nombreCampo="nombre"
-                    tipo="text"
-                    placeholder="Nombre"
-                    value={objeto.nombre}
-                    onInput={manejarInput} />
-                </div>
-                <div className="col"
-                ><Select
-                    nombreCampo="owner"
-                    options={owners}
-                    value={objeto.owner}
-                    onChange={manejarInput}
-                    placeholder="Dueño" />
+                  {children}
                 </div>
               </div>
             </form>

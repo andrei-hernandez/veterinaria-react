@@ -2,9 +2,67 @@ import React, { Component } from 'react';
 import ActionsMenu from './components/ActionsMenu';
 import Table from './components/Tabla/Table'
 import Modal from './components/Modal';
+import Input from './components/Input';
+import Select from './components/Select'
 import { listarEntidad, crearEditarEntidad, eliminarEntidad } from './service';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap';
+
+const tiposMascota =
+  [
+    { valor: "Perro", etiqueta: "Perro" },
+    { valor: "Gato", etiqueta: "Gato" },
+    { valor: "Pájaro", etiqueta: "Pájaro" },
+    { valor: "Otro", etiqueta: "Otro" },
+  ];
+
+const owners =
+  [
+    { valor: "América", etiqueta: "América" },
+    { valor: "Andi", etiqueta: "Andi" },
+    { valor: "Jhon", etiqueta: "Jhon" },
+    { valor: "Felix", etiqueta: "Felix" },
+  ];
+
+const ComponentCampo = (
+  {
+    manejarInput = () => { },
+    objeto = {},
+    nombreCampo = ""
+  }
+) => {
+  // eslint-disable-next-line default-case
+  switch (nombreCampo) {
+    case 'tipo':
+    case 'mascota':
+    case 'vererinarie':
+    case 'diagnostico':
+      return (
+        <Select
+          nombreCampo={nombreCampo}
+          options={tiposMascota}
+          onChange={manejarInput}
+          placeholder={nombreCampo}
+          value={objeto[nombreCampo]}
+        />
+      );
+    case 'nombre':
+    case 'apellido':
+    case 'id':
+    case 'owner':
+    case 'historia':
+      return (
+        <Input
+          nombreCampo={nombreCampo}
+          tipo="text"
+          onInput={manejarInput}
+          placeholder={nombreCampo}
+          value={objeto[nombreCampo]}
+        />
+      );
+  }
+};
+
 class Pagina extends Component {
   constructor(props) {
     super(props);
@@ -68,6 +126,7 @@ class Pagina extends Component {
 
   render() {
     const { titulo = "Pagina sin titulo" } = this.props;
+    const { columnas = [] } = this.state;
     return (
       <div className="container">
         <ActionsMenu titulo={titulo} />
@@ -75,11 +134,22 @@ class Pagina extends Component {
           entidades={this.state.entidades}
           editarEntidad={this.editarEntidad}
           eliminarEntidad={this.eliminarEntidad}
-          columnas={this.state.columnas} />
+          columnas={columnas} />
         <Modal
           manejarInput={this.manejarInput}
           crearEntidad={this.crearEntidad}
-          objeto={this.state.objeto} />
+          objeto={this.state.objeto} >
+          {columnas.map((columna, index) =>
+          (
+            <ComponentCampo
+              key={index}
+              manejarInput={this.manejarInput}
+              nombreCampo={columna}
+              objeto={this.state.objeto}
+            />
+          )
+          )}
+        </Modal>
       </div>
     );
   }
